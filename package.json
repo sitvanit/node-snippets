@@ -15,6 +15,8 @@
     "bluebird": "^3.5.1",
     "chalk": "^2.4.1",
     "console.table": "^0.10.0",
+    "dompurify": "^1.0.9",
+    "jsdom": "^13.2.0",
     "lodash": "^4.17.11",
     "log-update": "^2.3.0",
     "measured": "^1.1.0",
