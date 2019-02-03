@@ -48,7 +48,7 @@ const g = {...e, ...f};
 
 console.log(g); // { en: 'Bye', de: 'Ciao' }
 
-// Object.assign
+// Object.assign is exactly as the spread operator.
 f = Object.assign({}, e);
 
 // nested objects
