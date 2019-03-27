@@ -6,4 +6,3 @@ const transformStream = zlib.createGzip();
 const writableStream = fs.createWriteStream('file.gz');
 
 readableStream.pipe(transformStream).pipe(writableStream);
-
