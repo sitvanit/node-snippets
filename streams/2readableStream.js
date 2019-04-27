@@ -5,7 +5,7 @@ const readable = new MyReadable(data, { objectMode: true, highWaterMark: 2 });
 
 /** Consuming Readable Stream **/
 readable.on('readable', () => {
-    readable.read(); // If the readable.read() method returns a chunk of data, a 'data' event will be emitted.
+    readable.read();
 });
 
 readable.on('data', chunk => {
