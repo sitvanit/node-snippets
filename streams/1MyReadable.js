@@ -12,9 +12,9 @@ class MyReadable extends Readable {
             this.data = this.data.slice(size, this.data.length);
 
             return this.push(chunk); // 'readable'
+        } else {
+            this.push(null); // 'end'
         }
-
-        this.push(null); // 'end'
     }
 }
 
