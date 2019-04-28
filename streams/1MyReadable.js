@@ -11,7 +11,7 @@ class MyReadable extends Readable {
             const chunk = this.data.slice(0, size);
             this.data = this.data.slice(size, this.data.length);
 
-            return this.push(chunk); // 'readable'
+            this.push(chunk); // 'readable'
         } else {
             this.push(null); // 'end'
         }

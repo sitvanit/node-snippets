@@ -3,7 +3,7 @@ const fs = require('fs');
 const zlib = require('zlib');
 
 pipeline(
-    fs.createReadStream('notExistingFile'),
+    fs.createReadStream('file'),
     zlib.createGzip(),
     fs.createWriteStream('file.gz'),
     (err) => {

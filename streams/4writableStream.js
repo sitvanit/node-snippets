@@ -1,7 +1,7 @@
 const MyWritable = require('./3MyWritable');
 
 const data = ['first element', 'second element', 'last element'];
-const writable = new MyWritable({ highWaterMark: data[0].length });
+const writable = new MyWritable({ highWaterMark: data[0].length + 1 });
 
 /** Consuming Writable Stream **/
 const written = writable.write(data[0]);
