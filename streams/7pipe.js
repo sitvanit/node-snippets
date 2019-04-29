@@ -1,5 +1,5 @@
-const MyReadable = require('./1MyReadable');
-const MyWritable = require('./3MyWritable');
+const MyReadable = require('./3MyReadable');
+const MyWritable = require('./5MyWritable');
 
 const data = [{ a: 1 }, { b: 2 }, { c: 3 }, { d: 4 }, { e: 5 }];
 
