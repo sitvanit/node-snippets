@@ -16,8 +16,7 @@ console.log(readable.readableFlowing); // true
 
 // pause mode
 readable.on('readable', () => {
-    const chunk = readable.read(); // calls _read(), flushes the buffer and emits 'data' event
-    console.log(chunk);
+    readable.read(); // calls _read(), flushes the buffer and emits 'data' event
 });
 console.log(readable.readableFlowing); // false
 

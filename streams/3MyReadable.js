@@ -1,4 +1,5 @@
 const { Readable } = require('stream');
+// Readable streams are an abstraction for a source from which data is consumed.
 
 class MyReadable extends Readable {
     constructor(data, options) {

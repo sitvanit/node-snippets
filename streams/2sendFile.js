@@ -4,7 +4,7 @@ const fs = require('fs');
 // req readable stream
 // res writable stream
 const server = http.createServer((req, res) => {
-    const readStream = fs.createReadStream('file', { highWaterMark: 1024 }); // 1 kb (the default is 64 kb)
+    const readStream = fs.createReadStream('file', { highWaterMark: 1024 });
     readStream.on('data', chunk => {
         res.write(`\n\n***************** new chunk has been received: *****************\n\n${chunk}`);
     });

@@ -9,6 +9,7 @@ writable.write(data[1]); // fills the buffer
 writable.end(data[2]); // fills the buffer and emits 'finish' event
 
 console.log(written);
+// back pressure
 
 
 
