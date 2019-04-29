@@ -1,12 +1,12 @@
 const MyWritable = require('./3MyWritable');
 
 const data = ['first element', 'second element', 'last element'];
-const writable = new MyWritable({ highWaterMark: data[0].length + 1 });
+const writable = new MyWritable({ highWaterMark: data[0].length });
 
 /** Consuming Writable Stream **/
 const written = writable.write(data[0]);
-writable.write(data[1]);
-writable.end(data[2]); // 'finish'
+writable.write(data[1]); // fills the buffer
+writable.end(data[2]); // fills the buffer and emits 'finish' event
 
 console.log(written);
 

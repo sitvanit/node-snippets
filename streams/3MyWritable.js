@@ -9,7 +9,7 @@ class MyWritable extends Writable {
     _write(chunk, encoding, callback) {
         const formattedChunk  = this._writableState.objectMode === true ? JSON.stringify(chunk) : chunk;
         console.log(`Writing to stream: ${formattedChunk}`);
-        callback(); // 'drain'
+        callback(); // flushes the buffer and emits 'drain' event
     }
 }
 

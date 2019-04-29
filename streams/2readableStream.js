@@ -4,13 +4,22 @@ const data = [{ a: 1 }, { b: 2 }, { c: 3 }, { d: 4 }, { e: 5 }];
 const readable = new MyReadable(data, { objectMode: true, highWaterMark: 2 });
 
 /** Consuming Readable Stream **/
-readable.on('readable', () => {
-    readable.read();
-});
 
+console.log(readable.readableFlowing); // null
+
+// flowing mode - no buffering - can float the memory
+// listening to 'data' event calls _read() that will fill the buffer
 readable.on('data', chunk => {
     console.log(chunk);
 });
+console.log(readable.readableFlowing); // true
+
+// pause mode
+readable.on('readable', () => {
+    const chunk = readable.read(); // calls _read(), flushes the buffer and emits 'data' event
+    console.log(chunk);
+});
+console.log(readable.readableFlowing); // false
 
 readable.on('end', () => console.log('No more data!'));
 
