@@ -1,4 +1,4 @@
-const MyWritable = require('./3MyWritable');
+const MyWritable = require('./5MyWritable');
 
 const data = ['first element', 'second element', 'last element'];
 const writable = new MyWritable({ highWaterMark: data[0].length });
