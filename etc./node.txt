@@ -1,0 +1,73 @@
+/** Node.js: what it is, when and how to use it, and why you should **/
+
+Node.js is a JavaScript runtime built on Chrome’s V8 JavaScript engine.
+Node.js uses an event-driven, asynchronous non-blocking I/O model.
+Node.js operates on a single thread event loop.
+
+
+/* I/O (input/output) */
+
+I/O refers primarily to the program’s interaction with the system’s disk and network.
+Examples of I/O operations include reading/writing data from/to a disk, making HTTP requests, and talking to databases.
+They are very slow compared to accessing memory (RAM) or doing work on the CPU.
+
+
+/* Synchronous vs Asynchronous */
+
+sync execution usually refers to code executing in sequence.
+Each time a function is called, the program execution waits until that function returns before continuing to the next line of code.
+
+async execution refers to execution that doesn’t run in the sequence it appears in the code. In async programming the
+program doesn’t wait for the task to complete and can move on to the next task.
+An async operation is often I/O related, although setTimeout is an example of something that isn’t I/O but still async.
+
+Generally speaking, anything computation-related is sync and anything input/output/timing-related is async. The reason
+for I/O operations to be done asynchronously is that they are very slow and would block further execution of code otherwise.
+
+
+/** Blocking vs Non-Blocking **/
+
+Blocking refers to operations that block further execution until that operation finishes while non-blocking refers to
+code that doesn’t block execution.
+Blocking methods execute synchronously while non-blocking methods execute asynchronously.
+
+
+/** Node.js: what is it, why was it created, and how does it work? **/
+
+Simply put, Node.js is a platform that executes server-side JavaScript programs that can communicate with I/O sources
+like networks and file systems.
+Traditional web-serving techniques use the thread model, meaning one thread for each request. Since in an I/O operation
+the request spends most of the time waiting for it to complete, intensive I/O scenarios entail a large amount of unused
+resources (such as memory) linked to these threads. Therefore the “one thread per request” model for a server doesn’t
+scale well.
+Instead of the thread model, the right way to handle several concurrent connections was to have a single-thread, an event
+loop and non-blocking I/Os.
+For example, when you make a query to a database, instead of waiting for the response you give it a callback so your
+execution can run through that statement and continue doing other things. When the results come back you can execute the
+callback.
+The event loop is what allows Node.js to perform non-blocking I/O operations despite the fact that JavaScript is
+single-threaded. The loop, which runs on the same thread as the JavaScript code, grabs a task from the code and executes
+it. If the task is async or an I/O operation the loop offloads it to the system kernel, like in the case for new
+connections to the server, or to a thread pool, like file system related operations. The loop then grabs the next task
+and executes it.
+Since most modern kernels are multi-threaded, they can handle multiple operations executing in the background. When one
+of these operations completes (this is an event), the kernel tells Node.js so that the appropriate callback (the one
+that depended on the operation completing) may be added to the poll queue to eventually be executed.
+Node keeps track of unfinished async operations, and the event loop keeps looping to check if they are finished until
+all of them are.
+
+To accommodate the single-threaded event loop, Node.js uses the libuv library, which, in turn, uses a fixed-sized thread
+pool that handles the execution of some of the non-blocking asynchronous I/O operations in parallel. The main thread
+call functions post tasks to the shared task queue, which threads in the thread pool pull and execute.
+
+Inherently non-blocking system functions such as networking translate to kernel-side non-blocking sockets, while
+inherently blocking system functions such as file I/O run in a blocking way on their own threads. When a thread in the
+thread pool completes a task, it informs the main thread of this, which in turn, wakes up and executes the registered callback.
+
+
+/** Node.js: why and where to use it? **/
+
+Node.js performs best on intense I/O applications requiring speed and scalability with lots of concurrent connections,
+like video & audio streaming, real-time apps, live chats, gaming apps, collaboration tools, or stock exchange software.
+
+Node.js may not be the right choice for CPU intensive operations. Instead the traditional thread model may perform better.

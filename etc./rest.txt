@@ -1,0 +1,63 @@
+/** How not to blow your REST interview? **/
+
+
+/* The 5 principles of REST */
+
+1. Contract first approach / Uniform Resource Identifiers (URI/URL)
+2. Statelessness
+3. Client-Server model
+4. Caching
+5. Layered architecture
+
+REST stands for Representational State Transfer.
+Representational State is simply the current state of an object. The objects, in this case, are objects stored on a
+server inside a database.
+
+We are Transferring this representational state from the server to the client.
+
+For the data to be transferred from the database on the server to the app, there needs to be some piece of code that
+will convert the data to something that makes sense to the app. This piece of code is called the API.
+
+
+/* 1. Contract first approach / Uniform Resource Identifiers (URI/URL) */
+
+The specification of the API is a contract between the app and the server.
+the app needs to know that it can hit the same URI to get a particular piece of data, every-time! It also needs to know
+that it’ll get the data in the format that it expects, and that format will not change. This is the Contract and the URI.
+
+
+/* 2. Statelessness */
+
+The specification of the API should provide all the information. It does not expect nor assume that any state from
+previous calls has been preserved. This state is different from the representational state. The database on the server
+holds the state of the resources/objects. But it cannot hold the state of the client, the app.
+The server should have no knowledge of prior requests. The client needs to provide all the information necessary for the
+server to provide a response.
+
+
+/* 3. Client-Server model */
+
+The app doesn’t need to bother about how the server stores data.
+The point of intersection between the server and the app is the database schema. The database schema contains a
+description of the data stored and the layout in which it is stored. The schema should be hosted on the developer portal
+as part of the API documentation.
+
+The two most important points of intersection between the client (front-end) and the server (back-end) are -
+The data format that the client needs
+The granularity of the information.
+
+
+/* 4. Caching */
+
+Caching is the temporary storage of information outside of the server.
+Caching is stateful. The requirement for a REST API to be stateless increases chatter and caching can be used to
+compensate for some of that.
+
+
+/* 5. Layered Architecture */
+
+The app only knows about the gateway which hosts the endpoint. The app doesn’t interface with the compute nodes directly.
+ You can switch out the compute nodes and nobody would know. When a million users are hitting up the endpoints, the
+ compute nodes may need to scale up. The results could be coming in from different servers but to the app, the result is
+ coming from one single endpoint — the API Gateway.
+
