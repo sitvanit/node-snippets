@@ -19,9 +19,9 @@ console.log(arr4); // shallow copy
 // 3 - concat
 const arr5 = ['a', 'b', 'c'];
 const arr6 = ['d', 'e', 'f'];
-arr7 = arr5.concat(arr6);
+const arr7 = arr5.concat(arr6);
 console.log(arr7); // ['a', 'b', 'c', 'd', 'e', 'f']
-arr8 = [...arr5, ...arr6];
+const arr8 = [...arr5, ...arr6];
 console.log(arr8);
 
 // 4 - Math

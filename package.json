@@ -2,7 +2,7 @@
   "name": "snippets",
   "version": "1.0.0",
   "description": "",
-  "main": "etc./console.log.js",
+  "main": "console/console.log.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
