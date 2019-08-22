@@ -45,7 +45,8 @@ higherOrderFunction(10, add);
 /** Promises **/
 // Why do Promises exist? They exist to make the complexity of making asynchronous requests more manageable.
 // a Promise can be in one of three states, pending, fulfilled or rejected. they represent the status of an asynchronous
-// request.
+// request
+// The Promise object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
 
 // How do you create a Promise?
 // const promise = new Promise(callback);
