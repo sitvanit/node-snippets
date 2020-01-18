@@ -47,10 +47,32 @@ const forEachLoop = _ => {
     console.log('end');
 };
 
-forEachLoop();
+// forEachLoop();
 // start
 // end
 // 27
 // 0
 // 14
+
+
+/** await in forEach **/
+
+const forOfLoop = async _ => {
+    console.log('start');
+
+    for (const fruit of fruitsToGet) {
+        const numFruit = await getNumFruit(fruit);
+        console.log(numFruit);
+    }
+
+    console.log('end');
+};
+
+forOfLoop().then(() => console.log('done'));
+// start
+// 27
+// 0
+// 14
+// end
+// done
 
